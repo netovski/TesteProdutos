@@ -1,0 +1,80 @@
+﻿@model IEnumerable<ProdutoApp.Models.Produto>
+<style>
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-10px); 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+        }
+
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #666;
+    }
+
+    .btn-sm {
+        font-size: 0.875rem;
+        padding: 0.375rem 0.75rem;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+</style>
+<div class="container mt-5">
+    <h1 class="mb-4">Produtos</h1>
+
+    <p>
+        <a href="@Url.Action("Create", "Produto")" class="btn btn-primary mb-3">Novo Produto</a>
+    </p>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning" role="alert">
+            Nenhum produto cadastrado ainda. <a href="@Url.Action("Create", "Produto")" class="btn btn-primary btn-sm">Cadastrar um produto</a>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var produto in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">@produto.Nome</h5>
+                            <p class="card-text">@produto.Descricao</p>
+                            <p class="card-text"><strong>R$ @produto.Preco.ToString("F2")</strong></p>
+                            <div class="d-flex justify-content-around">
+                                <a href="@Url.Action("Edit", "Produto", new { id = produto.Id })" class="btn btn-warning btn-sm">Editar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+

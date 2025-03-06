@@ -1,0 +1,28 @@
+﻿# Ignore folders created by Visual Studio
+.vs/
+.vscode/
+.idea/
+
+# Ignore build outputs
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Ignore database files
+*.db
+
+# Ignore app settings
+appsettings.Development.json
+appsettings.json
+
+# Ignore dependencies
+node_modules/
+
+# Ignore OS-specific files
+Thumbs.db
+Desktop.ini
